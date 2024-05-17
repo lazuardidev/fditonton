@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-05-16 21:09:18</td>
+            <td class="headerValue">2024-05-17 22:11:32</td>
             <td></td>
           </tr>
                   <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -61,7 +61,7 @@
 <span id="L3"><span class="lineNum">       3</span>              : import 'package:ditonton/data/models/movie/movie_model.dart';</span>
 <span id="L4"><span class="lineNum">       4</span>              : import 'package:ditonton/data/models/movie/movie_response.dart';</span>
 <span id="L5"><span class="lineNum">       5</span>              : import 'package:ditonton/common/exception.dart';</span>
-<span id="L6"><span class="lineNum">       6</span>              : import 'package:http/http.dart' as http;</span>
+<span id="L6"><span class="lineNum">       6</span>              : import 'package:http/io_client.dart';</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : abstract class MovieRemoteDataSource {</span>
 <span id="L9"><span class="lineNum">       9</span>              :   Future&lt;List&lt;MovieModel&gt;&gt; getNowPlayingMovies();</span>
@@ -75,7 +75,7 @@
 <span id="L17"><span class="lineNum">      17</span>              : class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {</span>
 <span id="L18"><span class="lineNum">      18</span>              :   static const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';</span>
 <span id="L19"><span class="lineNum">      19</span>              :   static const BASE_URL = 'https://api.themoviedb.org/3';</span>
-<span id="L20"><span class="lineNum">      20</span>              :   final http.Client client;</span>
+<span id="L20"><span class="lineNum">      20</span>              :   final IOClient client;</span>
 <span id="L21"><span class="lineNum">      21</span>              : </span>
 <span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC tlaBgGNC">           1 :   MovieRemoteDataSourceImpl({required this.client});</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>

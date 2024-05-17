@@ -41,8 +41,8 @@ import 'package:ditonton/presentation/provider/tvseries/tvseries_list_notifier.d
 import 'package:ditonton/presentation/provider/tvseries/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries/watch_list_tvseries_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:http/io_client.dart';
 
 final locator = GetIt.instance;
 
@@ -183,5 +183,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => IOClient());
 }
