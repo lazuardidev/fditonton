@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "181961208142",
+    "project_id": "fditonton",
+    "storage_bucket": "fditonton.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181961208142:android:b1ff5fa3a08d5513a0ee1f",
+        "android_client_info": {
+          "package_name": "com.dicoding.ditonton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7A4Q2ZzoK7jdQkkDgi-JN7ggJJiHgZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

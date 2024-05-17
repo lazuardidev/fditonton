@@ -1,5 +1,7 @@
 import 'package:ditonton/common/constants.dart';
+import 'package:ditonton/common/ssl_pinning.dart';
 import 'package:ditonton/common/utils.dart';
+import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie/search_movie_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/home_tvseries_page.dart';
@@ -27,13 +29,20 @@ import 'package:ditonton/presentation/provider/tvseries/tvseries_list_notifier.d
 import 'package:ditonton/presentation/provider/tvseries/tvseries_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tvseries/watch_list_tvseries_notifier.dart';
 import 'package:ditonton/presentation/provider/movie/watchlist_movie_notifier.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/io_client.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 
-void main() {
-  di.init();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  IOClient ioClient = await SslPinning.ioClient;
+  di.init(ioClient);
   runApp(const MyApp());
 }
 

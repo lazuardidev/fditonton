@@ -46,7 +46,7 @@ import 'package:http/io_client.dart';
 
 final locator = GetIt.instance;
 
-void init() {
+void init(IOClient ioClient) {
   // provider
   locator.registerFactory(
     () => MovieListNotifier(
@@ -183,5 +183,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => IOClient());
+  locator.registerLazySingleton<IOClient>(() => ioClient);
 }
