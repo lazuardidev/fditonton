@@ -1,33 +1,33 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
+import 'package:ditonton/presentation/bloc/tvseries/now_playing_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/popular_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/top_rated_tvseries_bloc.dart';
 import 'package:ditonton/presentation/pages/tvseries/now_playing_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/popular_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/top_rated_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/tvseries_detail_page.dart';
-import 'package:ditonton/presentation/provider/tvseries/tvseries_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/constants.dart';
-import '../../../common/state_enum.dart';
 
 class HomeTVSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/tvseries';
   const HomeTVSeriesPage({super.key});
 
   @override
-  State<HomeTVSeriesPage> createState() => _HomeTvPageState();
+  State<HomeTVSeriesPage> createState() => _HomeTVSeriesPageState();
 }
 
-class _HomeTvPageState extends State<HomeTVSeriesPage> {
+class _HomeTVSeriesPageState extends State<HomeTVSeriesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => Provider.of<TVSeriesListNotifier>(context, listen: false)
-          ..fetchNowPlayingTV()
-          ..fetchPopularTV()
-          ..fetchTopRatedTV());
+    BlocProvider.of<NowPlayingTVSeriesBloc>(context)
+        .add(LoadNowPlayingTVSeries());
+    BlocProvider.of<PopularTVSeriesBloc>(context).add(LoadPopularTVSeries());
+    BlocProvider.of<TopRatedTVSeriesBloc>(context).add(LoadTopRatedTVSeries());
   }
 
   @override
@@ -45,14 +45,14 @@ class _HomeTvPageState extends State<HomeTVSeriesPage> {
                 onTap: () => Navigator.pushNamed(
                     context, NowPlayingTVSeriesPage.ROUTE_NAME),
               ),
-              Consumer<TVSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.nowPlayingState;
-                if (state == RequestState.Loading) {
+              BlocBuilder<NowPlayingTVSeriesBloc, NowPlayingTVSeriesState>(
+                  builder: (context, state) {
+                if (state is NowPlayingTVSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return TVList(data.nowPlayingTv);
+                } else if (state is NowPlayingTVSeriesSuccess) {
+                  return TVList(state.results);
                 } else {
                   return const Text('Failed');
                 }
@@ -62,14 +62,14 @@ class _HomeTvPageState extends State<HomeTVSeriesPage> {
                 onTap: () => Navigator.pushNamed(
                     context, PopularTVSeriesPage.ROUTE_NAME),
               ),
-              Consumer<TVSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.popularState;
-                if (state == RequestState.Loading) {
+              BlocBuilder<PopularTVSeriesBloc, PopularTVSeriesState>(
+                  builder: (context, state) {
+                if (state is PopularTVSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return TVList(data.popularTv);
+                } else if (state is PopularTVSeriesSuccess) {
+                  return TVList(state.results);
                 } else {
                   return const Text('Failed');
                 }
@@ -79,14 +79,14 @@ class _HomeTvPageState extends State<HomeTVSeriesPage> {
                 onTap: () => Navigator.pushNamed(
                     context, TopRatedTSeriesPage.ROUTE_NAME),
               ),
-              Consumer<TVSeriesListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedState;
-                if (state == RequestState.Loading) {
+              BlocBuilder<TopRatedTVSeriesBloc, TopRatedTVSeriesState>(
+                  builder: (context, state) {
+                if (state is TopRatedTVSeriesLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state == RequestState.Loaded) {
-                  return TVList(data.topRatedTV);
+                } else if (state is TopRatedTVSeriesSuccess) {
+                  return TVList(state.results);
                 } else {
                   return const Text('Failed');
                 }

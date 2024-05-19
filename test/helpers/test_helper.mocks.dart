@@ -4,8 +4,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:convert' as _i26;
-import 'dart:typed_data' as _i27;
+import 'dart:convert' as _i27;
+import 'dart:typed_data' as _i28;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i9;
@@ -31,8 +31,9 @@ import 'package:ditonton/domain/entities/tvseries/tvseries.dart' as _i18;
 import 'package:ditonton/domain/entities/tvseries/tvseries_detail.dart' as _i19;
 import 'package:ditonton/domain/repositories/movie_repository.dart' as _i7;
 import 'package:ditonton/domain/repositories/tvseries_repository.dart' as _i17;
-import 'package:http/http.dart' as _i6;
 import 'package:http/io_client.dart' as _i5;
+import 'package:http/src/base_request.dart' as _i26;
+import 'package:http/src/response.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i16;
 import 'package:sqflite/sqflite.dart' as _i25;
@@ -870,7 +871,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
   }
 
   @override
-  _i8.Future<_i5.IOStreamedResponse> send(_i6.BaseRequest? request) =>
+  _i8.Future<_i5.IOStreamedResponse> send(_i26.BaseRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #send,
@@ -942,7 +943,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i26.Encoding? encoding,
+    _i27.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -973,7 +974,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i26.Encoding? encoding,
+    _i27.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1004,7 +1005,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i26.Encoding? encoding,
+    _i27.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1035,7 +1036,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i26.Encoding? encoding,
+    _i27.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1083,7 +1084,7 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
       ) as _i8.Future<String>);
 
   @override
-  _i8.Future<_i27.Uint8List> readBytes(
+  _i8.Future<_i28.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -1093,6 +1094,6 @@ class MockIOClient extends _i1.Mock implements _i5.IOClient {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i8.Future<_i27.Uint8List>.value(_i27.Uint8List(0)),
-      ) as _i8.Future<_i27.Uint8List>);
+        returnValue: _i8.Future<_i28.Uint8List>.value(_i28.Uint8List(0)),
+      ) as _i8.Future<_i28.Uint8List>);
 }
