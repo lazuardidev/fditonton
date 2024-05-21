@@ -19,7 +19,7 @@ void main() {
   group('GetPopularTVSeries Tests', () {
     group('execute', () {
       test(
-          'should get list of tv from the repository when execute function is called',
+          'should get list popular tv series from repository',
           () async {
         // arrange
         when(mockTVSeriesRepository.getPopularTVSeries())

@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/domain/entities/tvseries/tvseries.dart';
-import 'package:ditonton/presentation/bloc/tvseries/now_playing_tvseries_bloc.dart';
-import 'package:ditonton/presentation/bloc/tvseries/popular_tvseries_bloc.dart';
-import 'package:ditonton/presentation/bloc/tvseries/top_rated_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/nowplaying/now_playing_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/popular/popular_tvseries_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/toprated/top_rated_tvseries_bloc.dart';
 import 'package:ditonton/presentation/pages/tvseries/now_playing_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/popular_tvseries_page.dart';
 import 'package:ditonton/presentation/pages/tvseries/top_rated_tvseries_page.dart';

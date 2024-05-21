@@ -19,7 +19,7 @@ void main() {
   group('GetPopularMovies Tests', () {
     group('execute', () {
       test(
-          'should get list of movies from the repository when execute function is called',
+          'should get list popular movies from repository',
           () async {
         // arrange
         when(mockMovieRpository.getPopularMovies())

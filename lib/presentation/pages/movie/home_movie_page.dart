@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/movie/movie.dart';
-import 'package:ditonton/presentation/bloc/movie/now_playing_movie_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/popular_movie_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/top_rated_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/nowplaying/now_playing_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/popular/popular_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/toprated/top_rated_movie_bloc.dart';
 import 'package:ditonton/presentation/pages/movie/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/movie/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/movie/top_rated_movies_page.dart';

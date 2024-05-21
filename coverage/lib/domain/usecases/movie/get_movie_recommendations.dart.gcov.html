@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-05-19 19:36:22</td>
+            <td class="headerValue">2024-05-21 07:36:36</td>
             <td></td>
           </tr>
                   <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -61,10 +61,10 @@
 <span id="L3"><span class="lineNum">       3</span>              : import 'package:ditonton/domain/repositories/movie_repository.dart';</span>
 <span id="L4"><span class="lineNum">       4</span>              : import 'package:ditonton/common/failure.dart';</span>
 <span id="L5"><span class="lineNum">       5</span>              : </span>
-<span id="L6"><span class="lineNum">       6</span>              : class GetMovieRecommendations {</span>
+<span id="L6"><span class="lineNum">       6</span>              : class GetRecommendationMovie {</span>
 <span id="L7"><span class="lineNum">       7</span>              :   final MovieRepository repository;</span>
 <span id="L8"><span class="lineNum">       8</span>              : </span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">           1 :   GetMovieRecommendations(this.repository);</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">           1 :   GetRecommendationMovie(this.repository);</span></span>
 <span id="L10"><span class="lineNum">      10</span>              : </span>
 <span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           1 :   Future&lt;Either&lt;Failure, List&lt;Movie&gt;&gt;&gt; execute(id) {</span></span>
 <span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           2 :     return repository.getMovieRecommendations(id);</span></span>

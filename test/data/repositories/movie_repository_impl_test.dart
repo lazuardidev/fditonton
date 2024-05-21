@@ -29,36 +29,36 @@ void main() {
   // Movie Test
   const tMovieModel = MovieModel(
     adult: false,
-    backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
-    id: 557,
-    originalTitle: 'Spider-Man',
+    backdropPath: '/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg',
+    genreIds: [18, 80],
+    id: 278,
+    originalTitle: 'The Shawshank Redemption',
     overview:
-        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
-    popularity: 60.441,
-    posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
-    releaseDate: '2002-05-01',
-    title: 'Spider-Man',
+        'Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.',
+    popularity: 161.431,
+    posterPath: '/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg',
+    releaseDate: '1994-09-23',
+    title: 'The Shawshank Redemption',
     video: false,
-    voteAverage: 7.2,
-    voteCount: 13507,
+    voteAverage: 8.705,
+    voteCount: 26158,
   );
 
   const tMovie = Movie(
     adult: false,
-    backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
-    id: 557,
-    originalTitle: 'Spider-Man',
+    backdropPath: '/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg',
+    genreIds: [18, 80],
+    id: 278,
+    originalTitle: 'The Shawshank Redemption',
     overview:
-        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
-    popularity: 60.441,
-    posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
-    releaseDate: '2002-05-01',
-    title: 'Spider-Man',
+        'Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.',
+    popularity: 161.431,
+    posterPath: '/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg',
+    releaseDate: '1994-09-23',
+    title: 'The Shawshank Redemption',
     video: false,
-    voteAverage: 7.2,
-    voteCount: 13507,
+    voteAverage: 8.705,
+    voteCount: 26158,
   );
 
   final tMovieModelList = <MovieModel>[tMovieModel];

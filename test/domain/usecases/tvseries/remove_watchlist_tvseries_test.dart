@@ -14,7 +14,7 @@ void main() {
     usecase = RemoveWatchListTVSeries(mockTVSeriesRepository);
   });
 
-  test('should remove watchlist tv from repository', () async {
+  test('should remove watchlist tv series from repository', () async {
     // arrange
     when(mockTVSeriesRepository.removeWatchlistTVSeries(testTvDetail))
         .thenAnswer((_) async => const Right('Removed from watchlist'));

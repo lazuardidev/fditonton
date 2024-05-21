@@ -17,7 +17,7 @@ void main() {
   final tMovies = <Movie>[];
   const tQuery = 'Spiderman';
 
-  test('should get list of movies from the repository', () async {
+  test('should get list search movies from repository', () async {
     // arrange
     when(mockMovieRepository.searchMovies(tQuery))
         .thenAnswer((_) async => Right(tMovies));

@@ -6,19 +6,18 @@ import 'package:mockito/mockito.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late GetMovieRecommendations usecase;
+  late GetRecommendationMovie usecase;
   late MockMovieRepository mockMovieRepository;
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
-    usecase = GetMovieRecommendations(mockMovieRepository);
+    usecase = GetRecommendationMovie(mockMovieRepository);
   });
 
   const tId = 1;
   final tMovies = <Movie>[];
 
-  test('should get list of movie recommendations from the repository',
-      () async {
+  test('should get list movie recommendations from repository', () async {
     // arrange
     when(mockMovieRepository.getMovieRecommendations(tId))
         .thenAnswer((_) async => Right(tMovies));

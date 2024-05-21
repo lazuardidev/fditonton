@@ -16,7 +16,7 @@ void main() {
 
   final tTv = <TVSeries>[];
 
-  test('should get list of tv from repository', () async {
+  test('should get list top rated tv series from repository', () async {
     // arrange
     when(mockTVSeriesRepository.getTopRatedTVSeries())
         .thenAnswer((_) async => Right(tTv));

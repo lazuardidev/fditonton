@@ -16,7 +16,7 @@ void main() {
 
   const tId = 1;
 
-  test('should get tv detail from the repository', () async {
+  test('should get detail tv series from repository', () async {
     // arrange
     when(mockTVSeriesRepository.getTVSeriesDetail(tId))
         .thenAnswer((_) async => Right(testTvDetail));

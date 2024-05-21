@@ -1,6 +1,6 @@
 import 'package:ditonton/common/utils.dart';
-import 'package:ditonton/presentation/bloc/movie/movie_watchlist_bloc.dart';
-import 'package:ditonton/presentation/bloc/tvseries/tvseries_watchlist_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/watchlist/watchlist_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/tvseries/watchlist/tvseries_watchlist_bloc.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
 import 'package:ditonton/presentation/widgets/tvseries_card_list.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class _WatchlistMoviesPageState extends State<WatchlistPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    BlocProvider.of<MovieWatchlistBloc>(context)
+    BlocProvider.of<WatchlistMovieBloc>(context)
         .add(const LoadWatchListMovie());
     BlocProvider.of<TVSeriesWatchlistBloc>(context)
         .add(const LoadWatchListTVSeries());
@@ -36,7 +36,7 @@ class _WatchlistMoviesPageState extends State<WatchlistPage>
 
   @override
   void didPopNext() {
-    BlocProvider.of<MovieWatchlistBloc>(context)
+    BlocProvider.of<WatchlistMovieBloc>(context)
         .add(const LoadWatchListMovie());
     BlocProvider.of<TVSeriesWatchlistBloc>(context)
         .add(const LoadWatchListTVSeries());
@@ -60,13 +60,13 @@ class _WatchlistMoviesPageState extends State<WatchlistPage>
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: BlocBuilder<MovieWatchlistBloc, MovieWatchlistState>(
+            child: BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
               builder: (context, state) {
-                if (state is MovieWatchListLoading) {
+                if (state is WatchListMovieLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is MovieWatchListSuccess) {
+                } else if (state is WatchListMovieSuccess) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
                       final movie = state.results[index];
@@ -74,7 +74,7 @@ class _WatchlistMoviesPageState extends State<WatchlistPage>
                     },
                     itemCount: state.results.length,
                   );
-                } else if (state is MovieWatchListError) {
+                } else if (state is WatchListMovieError) {
                   return Center(
                     key: const Key('error_message'),
                     child: Text(state.message),

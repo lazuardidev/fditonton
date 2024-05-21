@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie/movie_detail.dart';
-import 'package:ditonton/presentation/bloc/movie/movie_detail_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/movie_recommendation_bloc.dart';
-import 'package:ditonton/presentation/bloc/movie/movie_watchlist_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/detail/detail_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/recomendation/recommendation_movie_bloc.dart';
+import 'package:ditonton/presentation/bloc/movie/watchlist/watchlist_movie_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -23,28 +23,28 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<MovieDetailBloc>(context).add(LoadMovieDetail(widget.id));
-    BlocProvider.of<MovieRecommendationBloc>(context)
-        .add(LoadMovieRecommendation(widget.id));
-    BlocProvider.of<MovieWatchlistBloc>(context)
+    BlocProvider.of<DetailMovieBloc>(context).add(LoadDetailMovie(widget.id));
+    BlocProvider.of<RecommendationMovieBloc>(context)
+        .add(LoadRecommendationMovie(widget.id));
+    BlocProvider.of<WatchlistMovieBloc>(context)
         .add(LoadWatchListStatus(widget.id));
   }
 
   @override
   Widget build(BuildContext context) {
-    final isAddedToWatchList = context.select<MovieWatchlistBloc, bool>(
+    final isAddedToWatchList = context.select<WatchlistMovieBloc, bool>(
       (bloc) => (bloc.state is WatchListStatusAdded)
           ? (bloc.state as WatchListStatusAdded).isAddedToWatchList
           : false,
     );
     return Scaffold(
-      body: BlocBuilder<MovieDetailBloc, MovieDetailState>(
+      body: BlocBuilder<DetailMovieBloc, DetailMovieState>(
         builder: (context, state) {
-          if (state is MovieDetailLoading) {
+          if (state is DetailMovieLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is MovieDetailSuccess) {
+          } else if (state is DetailMovieSuccess) {
             final movie = state.result;
             return SafeArea(
               child: DetailContent(
@@ -52,7 +52,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                 isAddedToWatchList,
               ),
             );
-          } else if (state is MovieDetailError) {
+          } else if (state is DetailMovieError) {
             return Text(state.message);
           }
           return const SizedBox();
@@ -108,11 +108,11 @@ class DetailContent extends StatelessWidget {
                               movie.title,
                               style: kHeading5,
                             ),
-                            BlocConsumer<MovieWatchlistBloc,
-                                MovieWatchlistState>(
+                            BlocConsumer<WatchlistMovieBloc,
+                                WatchlistMovieState>(
                               listener: (context, state) {
                                 if (state is SuccessMessage) {
-                                  BlocProvider.of<MovieWatchlistBloc>(context)
+                                  BlocProvider.of<WatchlistMovieBloc>(context)
                                       .add(LoadWatchListStatus(movie.id));
                                   if (!context.mounted) return;
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -127,11 +127,11 @@ class DetailContent extends StatelessWidget {
                                 return ElevatedButton(
                                   onPressed: () async {
                                     if (!isAddedWatchlist) {
-                                      BlocProvider.of<MovieWatchlistBloc>(
+                                      BlocProvider.of<WatchlistMovieBloc>(
                                               context)
                                           .add(AddWatchList(movie));
                                     } else {
-                                      BlocProvider.of<MovieWatchlistBloc>(
+                                      BlocProvider.of<WatchlistMovieBloc>(
                                               context)
                                           .add(RemoveFromWatchList(movie));
                                     }
@@ -181,17 +181,17 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            BlocBuilder<MovieRecommendationBloc,
-                                MovieRecommendationState>(
+                            BlocBuilder<RecommendationMovieBloc,
+                                RecommendationMovieState>(
                               builder: (context, state) {
-                                if (state is MovieRecommendationLoading) {
+                                if (state is RecommendationMovieLoading) {
                                   return const Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (state is MovieRecommendationError) {
+                                } else if (state is RecommendationMovieError) {
                                   return Text(state.error);
                                 } else if (state
-                                    is MovieRecommendationSuccess) {
+                                    is RecommendationMovieSuccess) {
                                   return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
